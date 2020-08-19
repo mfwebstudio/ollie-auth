@@ -18,7 +18,7 @@ export const Success: React.FC = () => (
       </div>
     </div>
     <div className="mt-8 flex space-x-4">
-      <Link className="block flex-1" to="/auth/email">
+      <Link className="block flex-1" to="/auth/password">
         <Button className="w-full" variant="flat">
           later
         </Button>

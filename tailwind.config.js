@@ -1,5 +1,8 @@
 const path = require('path');
 const ui = require('@tailwindcss/ui');
+const customFormsPlugin = require('@tailwindcss/custom-forms');
+
+const { typography, customForms, ...theme } = ui().config.theme;
 
 module.exports = {
   future: {
@@ -8,8 +11,12 @@ module.exports = {
   experimental: {
     uniformColorPalette: true
   },
-  purge: false,
+  purge: {
+    mode: 'all',
+    content: ['src/**/*.tsx', 'src/**/*.ts', 'public/**/*.html'].map(p => path.resolve(__dirname, p))
+  },
   theme: {
+    ...theme,
     extend: {
       fontFamily: {
         sans: [
@@ -58,14 +65,5 @@ module.exports = {
       }
     })
   },
-  variants: {},
-  corePlugins: {
-    ...ui.corePlugins,
-    textOpacity: false,
-    backgroundOpacity: false,
-    borderOpacity: false,
-    divideOpacity: false,
-    placeholderOpacity: false
-  },
-  plugins: [ui]
+  plugins: [customFormsPlugin]
 };
