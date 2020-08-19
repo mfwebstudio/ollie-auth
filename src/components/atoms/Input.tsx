@@ -42,7 +42,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     px-0 py-0 
     max-w-full
     leading-none
-    rounded-xl shadow-sm 
+    rounded-xl 
+    shadow-sm 
+    overflow-hidden
     ${error ? 'border-red-600' : ''}
     ${isFocused ? 'shadow-outline-blue border-blue-300' : ''} 
     ${disabled ? 'opacity-50 cursor-not-allowed' : ''}

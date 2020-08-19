@@ -5,7 +5,7 @@ import cn from 'cntl';
 
 type NativeProps = Omit<InputHTMLAttributes<HTMLSelectElement>, 'prefix'>;
 
-export type SelectProps = {} & NativeProps;
+export type SelectProps = NativeProps;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ id, disabled, className, ...props }, ref) => {
@@ -13,10 +13,15 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const handleToggleFocus = () => setIsFocused(!isFocused);
 
     const containerCN = cn`
+    flex
     border
     border-gray-200
     bg-white
-    px-0 py-0 flex relative rounded-xl shadow-sm 
+    overflow-hidden
+    px-0 py-0  
+    relative 
+    rounded-xl 
+    shadow-sm 
     ${isFocused ? 'shadow-outline-blue border-blue-300' : ''} 
     ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
     ${className}

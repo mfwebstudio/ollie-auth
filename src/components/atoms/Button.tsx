@@ -16,14 +16,15 @@ export type ButtonProps = {
   as?: 'button' | 'a' | 'label' | 'input';
   rounded?: boolean;
   full?: boolean;
-  dark?: boolean;
   loading?: boolean;
   loadingText?: string;
   disabled?: boolean;
 } & Omit<NativeProps, 'disabled'>;
 
 const defaultCN = cn`
-  text-sm h-14 
+  text-sm 
+  h-14 
+  px-4
   rounded-xl
   inline-flex 
   items-center 
@@ -37,6 +38,7 @@ const defaultCN = cn`
 
 const defaultVariant = cn`
   font-medium
+  px-3
   bg-white text-gray-700 
   border border-gray-300 
   shadow-sm
@@ -70,13 +72,11 @@ export const Button = forwardRef<
   ButtonProps
 >((props, ref) => {
   const {
+    variant = 'default',
     as,
-    variant,
     disabled,
     children,
-    type,
     full,
-    dark,
     rounded,
     loading,
     loadingText,
@@ -86,7 +86,7 @@ export const Button = forwardRef<
 
   const classes = [
     defaultCN,
-    variantStyles[variant + (dark ? '-dark' : '')],
+    variantStyles[variant],
     disabled || loading ? 'opacity-50 cursor-not-allowed' : '',
     rounded ? 'rounded-full' : '',
     full ? 'w-full' : '',
@@ -96,10 +96,9 @@ export const Button = forwardRef<
     .trim();
 
   const Tag = as || ('button' as React.ReactType);
-  const typeProps = { ...(as === 'button' || as === 'input' ? { type } : {}) };
 
   return (
-    <Tag {...restProps} {...typeProps} ref={ref} disabled={disabled || loading} className={classes}>
+    <Tag {...restProps} ref={ref} disabled={disabled || loading} className={classes}>
       {loading && loadingText ? loadingText : children}
     </Tag>
   );
