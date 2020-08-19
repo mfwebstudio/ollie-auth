@@ -25,9 +25,10 @@ export const SignIn: React.FC = () => {
 
       try {
         const user = await signIn(email, password);
-        setCurrentUser(user);
 
+        setCurrentUser(user);
         setIsLoading(false);
+
         history.push('/profile');
       } catch (err) {
         // eslint-disable-next-line no-console
