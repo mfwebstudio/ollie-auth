@@ -52,8 +52,24 @@ module.exports = {
           700: '#1B3C33',
           800: '#142D26',
           900: '#0E1E1A'
+        },
+        secondary: {
+          50: '#FEFEF9',
+          100: '#FDFDF3',
+          200: '#FBFBE1',
+          300: '#F8F8CE',
+          400: '#F2F2AA',
+          500: '#EDED85',
+          600: '#D5D578',
+          700: '#8E8E50',
+          800: '#6B6B3C',
+          900: '#474728'
         }
-      }
+      },
+      minWidth: theme => ({
+        ...theme.minWidth,
+        ...(theme('spacing'))
+      })
     },
     customForms: theme => ({
       default: {
