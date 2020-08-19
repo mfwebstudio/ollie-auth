@@ -8,7 +8,7 @@ module.exports = {
   experimental: {
     uniformColorPalette: true
   },
-  purge: ['src/**/*.tsx', 'src/**/*.ts', 'src/**/*.html'].map(p => path.resolve(__dirname, p)),
+  purge: false,
   theme: {
     extend: {
       fontFamily: {
